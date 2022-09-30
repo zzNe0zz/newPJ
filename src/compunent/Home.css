@@ -1,0 +1,12 @@
+.home h1{
+    text-align: center;
+}
+.bnt-add{
+    display: flex;
+    flex-direction: row-reverse;
+}
+.inp input{
+    width: 100%;
+    margin: 10px 0;
+    padding: 8px 14px;
+}

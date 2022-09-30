@@ -1,0 +1,64 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.body{
+   height: 100vh;
+   width: 100vw;
+    /* background-color: black; */
+    display: flex;
+    background-image: url("https://tophinhanhdep.com/wp-content/uploads/2021/11/Halloween-Desktop-Wallpapers.jpg");
+   
+}
+.form-main{
+    justify-content: center;
+    justify-items: center;
+    /* width: 100%; */
+    min-width: 400px;
+    border: 1px solid black;
+    margin: auto;
+    padding: 5px 10px;
+    background-color: rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 15px 3px white;
+}
+.Form-text{
+    padding: 10px 5px;
+    margin-bottom: 15px;
+}
+.Form-text h1{
+    text-align: center;
+
+}
+.form-input{
+    display: flex;
+    margin-top: 15px;
+    margin-bottom: 10px;
+   border-bottom: 1px solid black;
+}
+.form-input input{
+    padding: 10px 8px;
+    width: 100%;
+    border: none;
+    outline: none;
+    /* background-color: rgba(255, 255, 255, 0.7); */
+    background: transparent;
+    font-size: 16px;
+}
+.form-input-icon{
+    padding-top: 10px;
+    /* font-size: 16px; */
+}
+.form-bnt button{
+        /* width: 100%; */
+        padding:10px 8px;
+}
+.form-bnt{
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: center;
+}
+.form-input input::placeholder{
+    font-size: 16px;
+    color: white;
+}
