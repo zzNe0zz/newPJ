@@ -16,14 +16,14 @@ const data = [
  let[ bigData , setBigData] = useState(data)
  let local = JSON.stringify(bigData)
  let clone = ""
-
+let [idex,setIdex] = useState("")
     // localStorage.getItem("toDo")?clone=JSON.parse(localStorage.getItem("toDo")):localStorage.setItem("toDo",`${local}`)
 
 
     const [isModalOpen, setIsModalOpen] = useState(false);
-  const showModal = () => {
-    setIsModalOpen(true);
-  };
+  // const showModal = () => {
+  //   setIsModalOpen(true);
+  // };
 
   const handleOk = () => {
     setIsModalOpen(false);
@@ -33,34 +33,85 @@ const data = [
   const handleCancel = () => {
     setIsModalOpen(false);
   };
+ function showModal1(){
+   setIsModalOpen(true);
+   let bntFix = document.querySelector(".bnt-ok").setAttribute("style"," display: none")
+  //  bntFix.setAttribute("style"," display: none")
+   console.log(bntFix);
+ }
+ function getIndex (x){
+  setIsModalOpen(true);
+  setIdex(x)
+  let bntFix = document.querySelector(".bnt-ok")
+  bntFix.setAttribute("style"," display: inline-block")
+  // let bntA = document.querySelector("#add")
+  // console.log(bntA);
+ }
 function ADD (){
     let name = document.querySelector("#name").value
     let description = document.querySelector("#description").value
     let tags = document.querySelector("#selec").value
    
     setBigData([...bigData,{name,description,tags}])
-    // setIsModalOpen(false);
+    setIsModalOpen(false);
+}
+function Fixdata() {
+  let name = document.querySelector("#name").value
+  let description = document.querySelector("#description").value
+  let tags = document.querySelector("#selec").value
+     bigData[idex] = {name,description,tags} ;
+ 
+  setBigData([...bigData])
+  setIsModalOpen(false);
+}
+function Dele(x){
+  console.log(x);
+  bigData.splice(x,1)
+  
+  setBigData([...bigData])
+}
+function Success (x){
+  let text = document.querySelector(`.index${x}`)
+   text.setAttribute("style"," text-decoration: line-through") 
+ let text2 = document.querySelector(`.inde${x}`)
+ text2.setAttribute("style"," text-decoration: line-through") 
+  
 }
     const columns = [
-        { title: 'Việc cần làm',dataIndex: 'name', key: 'name',render: (text) => <a>{text}</a>,},
+        { title: 'Việc cần làm',dataIndex: 'name', key: 'name',render: (_,text,index) => <a className= {`index${index}`}>{text.name}</a>,},
         {title: 'Độ ưu tiên ', key: 'tags',dataIndex: 'tags',
-          render: (_, tags ) => {
-            console.log(tags);
+          render: (_,tags,index ) => {
+                    let colorz = ""
+                  if(tags.tags === "Kém"){
+                    colorz = "gray"
+                  }
+                  if(tags.tags === "Cần làm"){
+                    colorz = "green"
+                  }
+                  if(tags.tags === "Làm gấp"){
+                    colorz = "red"
+                  }
                 return(
-                    <div>{tags.tags}</div>
+                  <Tag color={colorz} key={tags.tags}>
+                  {tags.tags.toUpperCase()}
+                </Tag>
                 )
           }
         },
-        { title: 'Mô tả việc cần làm', dataIndex: 'description', key: 'description',},
+        { title: 'Mô tả việc cần làm', dataIndex: 'description', key: 'description',render: (_,text,index) => <span className= {`inde${index}`}>{text.description}</span>,},
         {title: 'Action', key: 'action',
-          render: (_, record) => {
+          render: (_,record,index) => {
+            
            return(
-            <Space size="middle">
-                    <Button type="primary" onClick={showModal}>
+            <Space size="middle" >
+                    <Button type="primary" onClick={()=>{getIndex(index)}}>
                                  Fix
                      </Button>
-                     <Button >
+                     <Button  onClick={()=>{Success(index)}}>
                                  Hoàn Thành
+                     </Button>
+                     <Button onClick={()=>{Dele(index)}} >
+                                Xóa
                      </Button>
           </Space>
            )
@@ -79,8 +130,8 @@ function ADD (){
     <div className='home'>   
                         <h1>To Do List</h1>
                 <div className='bnt-add'>
-                        <Button type="primary" onClick={showModal}>
-                                        Thêm công viẹc
+                        <Button type="primary" onClick={ showModal1} >
+                                     Thêm công viẹc
                           </Button>
                 </div>
                  <div>
@@ -91,10 +142,10 @@ function ADD (){
                          <>
                             <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel} footer={[
                                 <Button key="back" onClick={handleCancel}> Cancel </Button>,
-                                <Button key="submit" type="primary"  onClick={handleOk}> OK</Button>,
+                                <Button key="submit" type="primary"  className='bnt-ok' onClick={Fixdata}> Fix</Button>,
                                 <Button key="submit" type="primary"  onClick={ADD} >Add</Button>,]} >
                                     <div className='inp'>
-                                            <input type="text"  placeholder='Việc cần làm' id='name'/>
+                                            <input type="text"  placeholder='Việc cần làm' id='name' />
                                             <input type="text"  placeholder='Mô tả công việc ' id='description'/> 
                                     </div>
                                     <div className='opt'>
