@@ -33,6 +33,7 @@ function Login() {
                         <input type="password" placeholder='Nhập Mật Khẩu' id='pass' />
                     </div>
                     <div className='form-bnt'>
+                        <button onClick={()=>(nav("/Sigup"))}>Đăng kí</button>
                         <button onClick={dangNhap}>Đăng Nhập</button>
                     </div>
 

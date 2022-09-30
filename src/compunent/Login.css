@@ -46,7 +46,7 @@
     font-size: 16px;
 }
 .form-input-icon{
-    padding-top: 10px;
+    padding-top: 15px;
     /* font-size: 16px; */
 }
 .form-bnt button{
@@ -56,7 +56,7 @@
 .form-bnt{
     margin-bottom: 15px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
 }
 .form-input input::placeholder{
     font-size: 16px;
