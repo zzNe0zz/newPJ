@@ -11,6 +11,6 @@
     padding: 8px 14px;
 }
 #dis{
-    display: none;
+    display: inline-block;
    
 }
