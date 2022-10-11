@@ -73,7 +73,8 @@ function Success (x){
 }
     const columns = [
         { title: 'Việc cần làm',dataIndex: 'name', key: 'name',render: (_,text,index) => <a className= {`index${index}`}>{text.name}</a>,},
-        {title: 'Độ ưu tiên ', key: 'tags',dataIndex: 'tags',
+        {title: 'Độ ưu tiên ', key: 'tags',dataIndex: 'tags', filters:[{text: 'Kém',value: 'Kém'},{text: 'Cần làm',value: 'Cần làm'},{text: 'Làm gấp',value: 'Làm gấp'}],
+        onFilter: (value, record) => {return record.tags.includes(value)},
           render: (_,tags,index ) => {
                     let colorz = ""
                   if(tags.tags === "Kém"){
