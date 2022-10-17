@@ -18,3 +18,9 @@ export const successTodo = (data)=>{
         payload : data
     }
 }
+export const fixTodo = (data)=>{
+    return{
+        type:"todoLis/fix",
+        payload : data
+    }
+}

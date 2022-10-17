@@ -8,6 +8,7 @@ let dataAll ={
 }
 
 const rootReducer = (state=dataAll,action)=>{
+  console.log(action);
     switch (action.type) {
         case 'todoList/Add':
           return {
@@ -25,6 +26,18 @@ const rootReducer = (state=dataAll,action)=>{
             ...state,
             todoList: state.todoList.filter((value)=>{return value.key === action.payload.key? value.succsess=true:{}})
           };
+          case "todoLis/fix":
+            return{
+              ...state,
+              todoList:  state.todoList.map(function(value,index){
+                if(value.key==action.payload.key){
+                  value.name = action.payload.name
+                  value.tags = action.payload.tags
+                  
+                }
+                return value
+              })
+            };
         default:
           return state
       }
