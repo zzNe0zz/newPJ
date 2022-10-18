@@ -1,20 +1,19 @@
 let dataAll ={
         login:{},
         todoList : [
-          { key: '1', name: 'học redux',  tags: "Cao",succsess:false},
-          {key: '2',name: 'đá bóng',   tags: "Trung bình",succsess:true },
-          {key: '3',name: 'xem phim',tags: "Kém",succsess:false},
+          
         ],
 }
-
+ localStorage.getItem("todoListRedux")?dataAll=JSON.parse( localStorage.getItem("todoListRedux")):localStorage.setItem("todoListRedux",JSON.stringify(dataAll))
 const rootReducer = (state=dataAll,action)=>{
   console.log(action);
     switch (action.type) {
         case 'todoList/Add':
+
           return {
                 ...state,
-                todoList: [...state.todoList,action.payload]
-            
+                todoList: [...state.todoList,action.payload] ,
+           
         };
         case "todoLis/Dele":
           return{
