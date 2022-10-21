@@ -23,7 +23,7 @@ const { Option } = Select;
     let [inputFix,setInputFix]=useState("")
    const [isModalOpen, setIsModalOpen] = useState(false);
   let [dataFix,setDataFix]=useState("")
-  console.log(dataFix,"datafix");
+  // console.log(dataFix,"datafix");
   const showModal = (data) => {
     setDataFix(data)
     

@@ -3,8 +3,9 @@ import 'antd/dist/antd.css';
 import { Button, Space, Table, Tag } from 'antd';
 import {useSelector} from "react-redux"
 function todoAppbody() {
-    let dataz = useSelector((value)=>{return value})
-    console.log(dataz.test.value);
+    let dataz = useSelector((value)=>{
+      return value.test.todoList})
+   
     const columns = [
         {
           title: 'Name',
@@ -46,28 +47,11 @@ function todoAppbody() {
           ),
         },
       ];
-      const data = [
-        {
-          key: '1',
-          name: 'John Brown',
-          tags: "Phải làm",
-        },
-        {
-          key: '2',
-          name: 'Jim Green',
-          address: 'London No. 1 Lake Park',
-          tags: "Cần làm",
-        },
-        {
-          key: '3',
-          name: 'Joe Black',
-          address: 'Sidney No. 1 Lake Park',
-          tags: "Làm",
-        },
-      ];
+   
   return (
     <div>
-             <Table columns={columns} dataSource={data} />;
+             <Table columns={columns} dataSource={dataz} />;
+            
     </div>
   )
 }

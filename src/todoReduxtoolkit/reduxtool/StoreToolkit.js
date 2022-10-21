@@ -6,5 +6,6 @@ import  TestSlice  from './ReduxSlice'
     reducer : {
         test : TestSlice,
     }
+    
 })
 export default storeTool
